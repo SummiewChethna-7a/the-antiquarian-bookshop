@@ -9,6 +9,7 @@ import { BookDetailPage } from "./pages/BookDetailPage";
 import { CatalogPage } from "./pages/CatalogPage";
 import { CheckoutCancelPage } from "./pages/CheckoutCancelPage";
 import { CheckoutSuccessPage } from "./pages/CheckoutSuccessPage";
+import { ContactPage } from "./pages/ContactPage";
 import { HomePage } from "./pages/HomePage";
 
 type Page =
@@ -17,6 +18,7 @@ type Page =
   | "bestsellers"
   | "new-arrivals"
   | "book"
+  | "contact"
   | "admin"
   | "checkout-success"
   | "checkout-cancel";
@@ -59,7 +61,6 @@ export default function App() {
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-4">
             {getBestsellers().map((b, i) => (
               <div key={b.id}>
-                {/* reuse catalog card */}
                 <CatalogBookCard book={b} onSelect={selectBook} index={i + 1} />
               </div>
             ))}
@@ -91,6 +92,7 @@ export default function App() {
           onSelectBook={selectBook}
         />
       );
+    if (page === "contact") return <ContactPage />;
     if (page === "admin") return <AdminPage />;
     if (page === "checkout-success")
       return <CheckoutSuccessPage onNavigate={navigate} />;
@@ -115,7 +117,6 @@ export default function App() {
   );
 }
 
-// Inline re-export for bestsellers/new-arrivals pages
 import { BookCard } from "./components/BookCard";
 import type { Book } from "./data/booksData";
 function CatalogBookCard({

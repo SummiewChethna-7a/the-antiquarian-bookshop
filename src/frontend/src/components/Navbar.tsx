@@ -22,6 +22,7 @@ export function Navbar({ currentPage, onNavigate, onSearch }: NavbarProps) {
     { label: "Catalog", page: "catalog" },
     { label: "Bestsellers", page: "bestsellers" },
     { label: "New Arrivals", page: "new-arrivals" },
+    { label: "Contact", page: "contact" },
   ];
 
   const handleSearch = (e: React.FormEvent) => {
